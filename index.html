@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo List</title>
+
+        <script src="https://kit.fontawesome.com/155279648b.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="index.css" />
+        <script src="index.js" defer></script>
+    </head>
+    <body>
+        <div class="index">
+            <section class="main">
+                <div class="calendar">
+                    <div class="navbar">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>TodoList</span>
+                    </div>
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button class="calendar-nav-btn go-prev">&lt;</button>
+                            <button class="calendar-nav-btn go-today">                
+                                <div class="calendar-year-month"></div>
+                            </button>
+                            <button class="calendar-nav-btn go-next">&gt;</button>
+                        </div>
+                    </div>
+                    <div class="calendar-main">
+                        <div class="days">
+                            <div class="day">일</div>
+                            <div class="day">월</div>
+                            <div class="day">화</div>
+                            <div class="day">수</div>
+                            <div class="day">목</div>
+                            <div class="day">금</div>
+                            <div class="day">토</div>
+                        </div>
+                        <div class="dates"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="todo invisible">
+                <div class="todo_title">
+                    <i class="back fas fa-arrow-left invisible"></i>
+                    <span class="todo_click_day">2021년 5월 7일</span>
+                </div>
+                <div class="todo_content todo_content_list">
+                    <ul class="todo_list">
+                        
+                    </ul>
+                    <div class="list-add">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                </div>
+                <div class="todo_content todo_content_add invisible">
+                    <form name="todo" class="todoForm">
+                        <input hidden type="text" name="date" class="clickDateFormInput" />
+                        <div class="section title">
+                            <span>제목</span> 
+                            <input type="text" name="title" placeholder="제목"/>
+                        </div>
+                        <div class="section time">
+                            <div class="time-title">
+                                <span>시간</span>
+                                <div class="alldayCheck">
+                                    <input id="allday" type="checkbox"> 
+                                    <label for="allday">종일</label> 
+                                </div>
+                            </div>
+                            <input class="time" type="time" name="time"></input>
+                        </div>
+                        <div class="section notes">
+                            <span>내용</span> 
+                            <textarea class="notes" type="text" name="notes" placeholder="내용" cols="20" rows="10"></textarea>
+                        </div>
+                    </form>
+                    <button class="todoAddbutton"><i class="fas fa-plus-circle"></i></button>
+                </div>
+            </section>
+        </div>
+    </body>
+
+</html>
