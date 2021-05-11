@@ -52,22 +52,15 @@ function insertDaysInCalendar(todoItems, idx) {
   } */ 
 
   const dates = prevDates.concat(thisDates);
-  dates.forEach((date, i) => {
-      /* dateDiv = document.createElement('div');
+
+  /* dateDiv = document.createElement('div');
       dateDiv.dataset.key = i;
       dateDiv.dataset.value = date;
       dateDiv.textContent = date;
       dateDiv.className = 'date';
       datesul.appendChild(dateDiv); */
-      if (idx == date) {
-        console.log(idx, date, i);
-        dates[i] = `<div class="date clickDate" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
-      } else {
-        dates[i] = `<div class="date" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
-      }
-  });
-
-  document.querySelector('.calendar .calendar-main .dates').innerHTML = dates.join('');
+      
+  document.querySelector('.calendar .calendar-main .dates').innerHTML = dates.map((date, i) => createDateHtmlString(date, i, idx)).join('');
 
   // 오늘 날짜 포커스
   const today = new Date();
@@ -84,6 +77,15 @@ function insertDaysInCalendar(todoItems, idx) {
     } 
   });
 };
+
+function createDateHtmlString(date, i, idx) {
+  if (idx == date) {
+    console.log(idx, date, i);
+    return `<div class="date clickDate" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
+  } else {
+    return `<div class="date" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
+  }
+}
 
 // 달력 이전달, 다음달 버튼 
 function setClickPrevNextMonth(isPrev) {
@@ -156,13 +158,14 @@ function setTodoItemList(todoItems, b = false) {
 
   let inTodoListString ='';
   let isList = false;
+
   todoItems.forEach((todoItem, index) => {
     if (b) {
       saveLocalTodoItem(todoItem);
     }
 
     if(todoItem.clickDate == clickDateFormat) {
-      inTodoListString += setInTodoItemHTML(todoItem, index);
+      inTodoListString += createInTodoItemHTML(todoItem, index);
       isList = true;
     } 
   });
@@ -191,7 +194,7 @@ function saveLocalTodoItem(todoItem) {
 }
 
 // 로드된 리스트 아이템 html string
-function setInTodoItemHTML(todoItem, index) {
+function createInTodoItemHTML(todoItem, index) {
   if (todoItem.time === '') {
     todoItem.time = '종일';
   }
@@ -234,7 +237,7 @@ function invisibleMoreMenu(index = null, isClick) {
   moreTodoListMenuItem.forEach(moreMenu => {
     moreMenu.classList.add('invisible');
   });
-
+  
   if (isClick) {
     moreTodoListMenuItem[index].classList.remove('invisible');
   } else {
