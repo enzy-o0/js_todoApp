@@ -25,7 +25,7 @@ function loadTodoItemLocalStroage() {
 //// 1. 달력 화면
 // 1.1 달력 구조에 맞게 Set
 let date= new Date();
-function insertDaysInCalendar(todoItems) {
+function insertDaysInCalendar(todoItems, idx) {
   const viewYear = date.getFullYear();
   const viewMonth = date.getMonth();
   document.querySelector('.calendar-year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
@@ -59,7 +59,12 @@ function insertDaysInCalendar(todoItems) {
       dateDiv.textContent = date;
       dateDiv.className = 'date';
       datesul.appendChild(dateDiv); */
-      dates[i] = `<div class="date" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
+      if (idx == date) {
+        console.log(idx, date, i);
+        dates[i] = `<div class="date clickDate" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
+      } else {
+        dates[i] = `<div class="date" data-key="${i}" data-value="${date}" id="${date}">${date}<span class="isTodo invisible"><i class="fas fa-heart"></i></span></div>`
+      }
   });
 
   document.querySelector('.calendar .calendar-main .dates').innerHTML = dates.join('');
@@ -72,12 +77,8 @@ function insertDaysInCalendar(todoItems) {
   } 
 
   todoItems.forEach((todoItem, index) => {
-    const isTodoDates = document.querySelector('.calendar .calendar-main .dates .date .isTodo');
     const todoItemDate = todoItem.clickDate.split(/[^0-9]/g)[2];
     const isTodoDate = document.getElementById(todoItemDate);
-
-    console.log(isTodoDate);
-    console.log(todoItemDate, isTodoDate.dataset.value);
     if(todoItemDate == isTodoDate.dataset.value) {
       isTodoDate.querySelector('.isTodo').classList.remove('invisible');
     } 
@@ -144,7 +145,6 @@ function displayClickDateTodoList(b, value = new Date().getDate()) {
   console.log(clickDateFormInput.value);
   return b ? displayTodoList.classList.remove('invisible') : displayTodoList.classList.add('invisible');
 }
-
 
 //// 2. 리스트 화면
 
@@ -243,9 +243,8 @@ function invisibleMoreMenu(index = null, isClick) {
 }
 
 // 수정, 삭제시 index을 위한 로컬 배열 (todoItemArr), 리스트 아이디 (setInTodoItemHTML 할때, index 변동) 비교
-function findIndex(todoArrIndex) {
+function todoArrfindIndex(todoArrIndex) {
   const idx = todoItemArr.findIndex(function(item, index) { 
-    console.log(index, todoArrIndex);
     return index == todoArrIndex; 
   });
   return idx;
@@ -257,15 +256,15 @@ function modifyClickListener() {
   modifyTodoListMenu.forEach((modifyBt) => {
     modifyBt.addEventListener('click', () => {
           const todoArrIndex = modifyBt.parentNode.id;
-          const idx = findIndex(todoArrIndex);
+          const idx = todoArrfindIndex(todoArrIndex);
           todoAddButton.classList.add('modify');
           todoAddButton.id = idx;
 
           displayClickDateTodoAdd(true);
           displayTodoAddAndBackButton(true);
           setDisplayClickDateTodoModify(idx);
-      }); 
     });
+  });
 }
 
 // 리스트화면 - 더보기 - 삭제 버튼 클릭 리스너
@@ -274,10 +273,13 @@ function deleteClickListener() {
   deleteTodoListMenu.forEach((deleteBt) => {
     deleteBt.addEventListener('click', () => {
         const todoArrIndex = deleteBt.parentNode.id;
-        const idx = findIndex(todoArrIndex);
+        const idx = todoArrfindIndex(todoArrIndex);
+        const date = todoItemArr[idx].clickDate.split(/[^0-9]/g)[2];
+        console.log(date);
 
         todoItemArr.splice(idx, 1);
         setTodoItemList(todoItemArr);
+        insertDaysInCalendar(todoItemArr, date);
         localStorage.setItem('todoItem', JSON.stringify(todoItemArr));
       }); 
     });
@@ -308,10 +310,13 @@ todoAddButton.addEventListener('click', () => {
   }
 
   const todoItem = new TodoItem(form.date.value, form.title.value, form.time.value, form.notes.value);
+  const date = form.date.value.split(/[^0-9]/g)[2];
 
   saveLocalTodoItem(todoItem);
   displayTodoAddAndBackButton(false);
   setTodoItemList(todoItemArr);
+  insertDaysInCalendar(todoItemArr, date);
+
   localStorage.setItem('todoItem', JSON.stringify(todoItemArr));
   todoAddButton.classList.remove('modify');
 
@@ -373,6 +378,7 @@ function displayTodoAddAndBackButton(isAdd) {
       form.title.value = '';   
       addTodoTimeInput.value = '';
       form.time.vaule = '';      
+      form.notes.value = '';
     }
   } else {
     backToListButton.classList.add('invisible');
