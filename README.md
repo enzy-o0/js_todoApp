@@ -11,7 +11,7 @@
 ## Functions
 
 - new Date를 이용한 달력 커스텀
-- Local Stroage로 Todo Item 관리
+- Local Storage로 Todo Item 관리
 - 더보기 버튼 drop down 커스텀
 
 ## Screen (Desktop)
