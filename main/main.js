@@ -97,8 +97,6 @@ function paintGreetingCase() {
     } else {
         greetingText = '잘 시간이네. 고생 많았어!';
     }
-    console.log(paintHour, greetingText)
-
     return greetingText;
 }
 

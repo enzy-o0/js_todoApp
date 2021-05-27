@@ -1,6 +1,6 @@
-import { todoItemArr, saveLocalTodoItem } from './index.js'
+import { todoItemArr, saveLocalTodoItem } from '../index.js'
 import { displayTodoAddAndBackButton, setDisplayClickDateTodoModify} from './addlist.js'
-import insertDaysInCalendar from './calendar.js'
+import insertDaysInCalendar from '../calendar/calendar.js'
 
 //// 2. 리스트 화면
 // 2-1. 로드된 리스트 아이템 셋

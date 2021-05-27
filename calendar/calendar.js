@@ -1,7 +1,7 @@
 // calendar.js - 달력 화면 구현.
 
-import { todoItemArr } from './index.js'
-import { setTodoItemList, displayClickDateTodoAdd } from './todolist.js'
+import { todoItemArr } from '../index.js'
+import { setTodoItemList, displayClickDateTodoAdd } from '../todo/todolist.js'
 
 //// 1. 달력 화면
 // 1.1 달력 구조에 맞게 Set

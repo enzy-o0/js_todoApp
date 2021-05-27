@@ -1,6 +1,6 @@
-import { todoItemArr, TodoItem , saveLocalTodoItem } from './index.js'
+import { todoItemArr, TodoItem , saveLocalTodoItem } from '../index.js'
 import { displayClickDateTodoAdd, setTodoItemList } from './todolist.js'
-import insertDaysInCalendar from './calendar.js'
+import insertDaysInCalendar from '../calendar/calendar.js'
 
 const backToListButton = document.querySelector('.todo .todo_title .back');
 const todoAddButton = document.querySelector('.todoAddbutton');

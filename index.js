@@ -2,9 +2,9 @@
 
 'use strict';
 
-import insertDaysInCalendar from './calendar.js'
-import { setTodoItemList } from './todolist.js'
-import { initMain } from './main.js'
+import insertDaysInCalendar from './calendar/calendar.js'
+import { setTodoItemList } from './todo/todolist.js'
+import { initMain } from './main/main.js'
 
 class TodoItem { // Todo Item Arribute
   constructor(clickDate, title, time, notes) {
