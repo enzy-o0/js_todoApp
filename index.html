@@ -5,18 +5,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo List</title>
-
         <script src="https://kit.fontawesome.com/155279648b.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="index.css" />
-        <script src="index.js" defer></script>
+        <script src="index.js" defer type="module"></script>
     </head>
     <body>
         <div class="index">
-            <section class="main">
+            <section class="clock">
+                <div class="js-clock">
+                    <h1 class="js-title"></h1>
+                </div>
+                <form class="js-form form showing">
+                    <input type="text" placeholder="당신의 이름은 무엇인가요?"/>
+                </form>
+                <h4 class="js-greetings greetings"></h4>
+                <span class="js-date"></span>
+            </section>
+            <section class="main invisible">
                 <div class="calendar">
                     <div class="navbar">
                         <i class="fas fa-clipboard-check"></i>

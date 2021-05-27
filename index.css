@@ -8,6 +8,7 @@
     --i-button-size : 2.5rem;
     --allday-checkbox-size: 1.25rem;
 
+    --default-color: #fff;
     --main-color-primary: #ea80fc;
     --main-color-dark: #b64fc8;  
     --main-color-light: #ffb2ff;
@@ -17,6 +18,8 @@
 
     --day-saturday: #396EE2;
     --day-sunday: #D13E3E;
+
+    --input-warning: #c62828;
 
     --margin-primary: 0.625em;
     --margin-double: 1.25em;
@@ -30,10 +33,13 @@
 }
 
 * {padding: 0;margin: 0; box-sizing: border-box; border-style: none; outline: none;}
-body {width: 100vw; margin: 0;padding: 0;font-family: 'Nanum Gothic', sans-serif;}
+html, body { width: 100%; height: 100%; margin: 0;padding: 0;font-family: 'Nanum Gothic', sans-serif; font-size: 16px; background-color: #2c3e50; color: white;}
 button {border-style: none; background-color: transparent;}
 input[type=text], input[type=time], textarea { border-radius: var(--border-radius); border: var(--border-size) solid var(--color-outline);
-    box-shadow: 1px 1px 1px 1px var(--color-outline);}
+    box-shadow: 1px 1px 1px 1px var(--color-outline); background-color: transparent; color: var(--default-color)}
+input::placeholder, textarea::placeholder { color: var(--default-color)}
+input.warning::placeholder { color: var(--input-warning) }
+
 
 .index {
     width: 100vw;
@@ -41,23 +47,27 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
     display: flex;
     justify-content: space-around;
     align-items: center;
+    overflow: hidden;
 }
 .main {
     width: 40%;
     height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    z-index: 3;
 }
 
 .todo {
     width: 40%;
-    height: 90%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     border: var(--border-size) solid var(--color-outline);
-    box-shadow: 3px 3px 3px 3px var(--color-outline);
     border-radius: var(--border-radius);
+    z-index: 3;
+    right: 150%;
+    animation: visible 3s linear;
 }
 
 .invisible {
@@ -85,11 +95,11 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
 
 .calendar {
     width: 100%;
-    height: 90%;
+    height: 70%;
     border: 1px solid var(--color-outline);
     border-radius: var(--border-radius);
     padding: 2%;
-    box-shadow: 3px 3px 3px 3px var(--color-outline);
+    animation: visible 5s linear;
 }
 
 .calendar .calendar-header {
@@ -102,6 +112,7 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
 .calendar .calendar-header .calendar-year-month{
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .calendar .calendar-header .calendar-nav{
@@ -116,6 +127,7 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
     font-size: var(--font-title-size);
     padding: var(--margin-primary);
     cursor: pointer;
+    color: white;
 }
 .calendar .calendar-main {
     width: 100%;
@@ -363,7 +375,7 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
     margin-right:calc(var(--margin-primary) * 5);
     position: absolute;
     left: -50%;
-    background-color: #f7f7f7;
+    background-color: transparent;
     border-radius: var(--border-small-radius);
     border: var(--border-size) solid var(--color-outline);
 }
@@ -371,8 +383,8 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
 .todo .todo_content .section input#allday[type=checkbox]:checked + label:before {
     content: "\2714";
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
-    color: #fff;  
-    background: var(--main-color-primary);
+    background-color: transparent;  
+    color: var(--main-color-primary);
     text-align: center;  
 }
 
@@ -407,22 +419,26 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
 }
 
 .list-add {
-    width: 78%;
-    height: 4rem;
-    margin: 1rem auto;
-    border: var(--border-size) solid var(--color-outline);
+    width: 100%;
+    position: inherit;
+    margin-bottom : 1rem;
     border-radius: var(--border-radius);
-    padding: 1rem;
     font-size: var(--default-size);
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
+
 .list-add i{
     text-align: center;
     color: var(--main-color-light);
     font-size: var(--i-button-size);
 }
+
+.list-add i:hover{
+    transform: scale(1.1);
+}
+
 
 .defalutUl {
     display: flex;
@@ -430,17 +446,112 @@ input[type=text], input[type=time], textarea { border-radius: var(--border-radiu
     align-items: center;
 }
 
-@media screen and (max-width: 48rem) {
-    .index {
-        width: 100vw;
-        height: 100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.form,
+.greetings  {
+    display: none;
+}
 
-    .main, .todo {
-        width: 85%;
-        margin: 1.5rem 0;
+.showing {
+    display: block;
+}
+
+.form input, .js-greetings {
+    padding: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2em;
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    animation: fadeIn 0.6s linear;
+    opacity: 0.5;
+}
+
+.clock {
+    width: 100%;
+    left: 0;
+    font-size: 2rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    /* animation: moved 2s linear alternate forwards; */
+}
+
+.clock .js-title {
+    font-size: 5rem;
+}
+
+.clock button {
+    font-size: 1rem;
+    color: white;
+    border: 1px solid #fff;
+    width: 30%;
+    margin: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.clock button:hover {
+    transform :scale(1.1);
+}
+
+.hideClock {
+    -webkit-animation: cssAnimation 5s forwards; 
+    animation: moved 5s forwards;
+    height: 30%;
+    font-size: 1rem;
+}
+
+.hideClock button {
+    display: none;
+}
+
+.hideClock .js-title {
+    font-size: 2rem;
+}
+
+@keyframes moved {
+    from {
+        transform :scale(1);
+    }
+    to {
+        transform :scale(0.2);
+        transform : translate(0%, -140%);
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+@keyframes visible {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    body {
+        font-size: 10px;
     }
 }
