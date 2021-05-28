@@ -225,23 +225,6 @@ function displayClickDateTodoList(b) {
 
 /***/ }),
 
-/***/ "./src/js/config.js":
-/*!**************************!*\
-  !*** ./src/js/config.js ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "config": () => (/* binding */ config)
-/* harmony export */ });
-var config = {
-  API_KEY: '5fbf5b9e1a26ce3a810def918022ebed'
-};
-
-/***/ }),
-
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -458,14 +441,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ weatherInit)
 /* harmony export */ });
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./src/js/config.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-
 var COORDS = 'coords';
-var API_KEY = _config_js__WEBPACK_IMPORTED_MODULE_0__.config.API_KEY;
 var weather = document.querySelector('.js-date');
 
 function getWeather(_x, _x2) {
@@ -480,7 +460,7 @@ function _getWeather() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch("https://api.openweathermap.org/data/2.5/weather?lat=".concat(lat, "&lon=").concat(lng, "&appid=").concat(API_KEY, "&units=metric"));
+            return fetch("https://api.openweathermap.org/data/2.5/weather?lat=".concat(lat, "&lon=").concat(lng, "&appid=").concat(process.env.API_KEY, "&units=metric"));
 
           case 2:
             endpoint = _context.sent;

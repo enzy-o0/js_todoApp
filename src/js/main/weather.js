@@ -1,7 +1,5 @@
-require('dotenv').config();
 
 const COORDS = 'coords';
-const API_KEY = config.API_KEY
 const weather = document.querySelector('.js-date')
 
 async function getWeather(lat, lng) {
