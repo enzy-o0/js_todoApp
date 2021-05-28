@@ -3,5 +3,5 @@ config.js
 node_modules
 
 dist/
-
 .DS_Store
+!bower_components/**/dist/
