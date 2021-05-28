@@ -40,7 +40,7 @@ function paintImage() {
         imageNumber = 4;
     } 
 
-    image.src = `/images/${imageNumber}.jpg`
+    image.src = `/src/img/${imageNumber}.jpg`
     image.classList.add('bgImage');
     body.appendChild(image);
 }

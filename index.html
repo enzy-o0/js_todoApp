@@ -10,8 +10,8 @@
         <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="index.css" />
-        <script src="index.js" defer type="module"></script>
+        <link rel="stylesheet" href="./src/css/index.css" />
+        <script src="./src/js/index.js" defer type="module"></script>
     </head>
     <body>
         <div class="index">
@@ -53,43 +53,44 @@
                         <div class="dates"></div>
                     </div>
                 </div>
-            </section>
-            <section class="todo invisible">
-                <div class="todo_title">
-                    <i class="back fas fa-arrow-left invisible"></i>
-                    <span class="todo_click_day">2021년 5월 7일</span>
-                </div>
-                <div class="todo_content todo_content_list">
-                    <ul class="todo_list">
-                        
-                    </ul>
-                    <div class="list-add">
-                        <i class="fas fa-plus-circle"></i>
+
+                <div class="todo invisible">
+                    <div class="todo_title">
+                        <i class="back fas fa-arrow-left invisible"></i>
+                        <span class="todo_click_day">2021년 5월 7일</span>
                     </div>
-                </div>
-                <div class="todo_content todo_content_add invisible">
-                    <form name="todo" class="todoForm">
-                        <input hidden type="text" name="date" class="clickDateFormInput" />
-                        <div class="section title">
-                            <span>제목</span> 
-                            <input type="text" name="title" placeholder="제목"/>
+                    <div class="todo_content todo_content_list">
+                        <ul class="todo_list">
+                            
+                        </ul>
+                        <div class="list-add">
+                            <i class="fas fa-plus-circle"></i>
                         </div>
-                        <div class="section time">
-                            <div class="time-title">
-                                <span>시간</span>
-                                <div class="alldayCheck">
-                                    <input id="allday" type="checkbox"> 
-                                    <label for="allday">종일</label> 
-                                </div>
+                    </div>
+                    <div class="todo_content todo_content_add invisible">
+                        <form name="todo" class="todoForm">
+                            <input hidden type="text" name="date" class="clickDateFormInput" />
+                            <div class="section title">
+                                <span>제목</span> 
+                                <input type="text" name="title" placeholder="제목"/>
                             </div>
-                            <input class="time" type="time" name="time"></input>
-                        </div>
-                        <div class="section notes">
-                            <span>내용</span> 
-                            <textarea class="notes" type="text" name="notes" placeholder="내용" cols="20" rows="10"></textarea>
-                        </div>
-                    </form>
-                    <button class="todoAddbutton"><i class="fas fa-plus-circle"></i></button>
+                            <div class="section time">
+                                <div class="time-title">
+                                    <span>시간</span>
+                                    <div class="alldayCheck">
+                                        <input id="allday" type="checkbox"> 
+                                        <label for="allday">종일</label> 
+                                    </div>
+                                </div>
+                                <input class="time" type="time" name="time"></input>
+                            </div>
+                            <div class="section notes">
+                                <span>내용</span> 
+                                <textarea class="notes" type="text" name="notes" placeholder="내용" cols="20" rows="10"></textarea>
+                            </div>
+                        </form>
+                        <button class="todoAddbutton"><i class="fas fa-plus-circle"></i></button>
+                    </div>
                 </div>
             </section>
             <div class="toast invisible">
