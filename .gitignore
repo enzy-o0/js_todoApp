@@ -2,4 +2,6 @@ config.js
 
 node_modules
 
-dist/js
+dist/
+
+.DS_Store
