@@ -2,7 +2,11 @@
   "name": "todolist",
   "version": "1.0.0",
   "description": "자바스크립트",
-  "main": "index.js",
+  "main": "index.html",
+  "engine": {
+    "node": "12.22.1",
+    "npm": "6.14.12"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -w"
