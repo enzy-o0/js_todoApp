@@ -42,33 +42,43 @@ input.warning::placeholder { color: var(--input-warning) }
 
 
 .index {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     overflow: hidden;
 }
 .main {
-    width: 40%;
-    height: 100%;
-    justify-content: center;
+    width: 100%;
+    height: 70%;
+    justify-content: space-around;
     align-items: center;
     display: flex;
     z-index: 3;
 }
 
+
 .todo {
     width: 40%;
-    height: 70%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     border: var(--border-size) solid var(--color-outline);
     border-radius: var(--border-radius);
     z-index: 3;
-    right: 150%;
     animation: visible 3s linear;
 }
+
+
+.calendar {
+    width: 40%;
+    height: 100%;
+    border: 1px solid var(--color-outline);
+    border-radius: var(--border-radius);
+    animation: visible 5s linear;
+}
+
 
 .invisible {
     display: none !important;
@@ -76,10 +86,10 @@ input.warning::placeholder { color: var(--input-warning) }
 
 .navbar {
     font-size: var(--font-title-size);
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--margin-primary) 0;
 }
 
 .navbar span{
@@ -93,17 +103,9 @@ input.warning::placeholder { color: var(--input-warning) }
     margin-right: var(--margin-primary);
 }
 
-.calendar {
-    width: 100%;
-    height: 70%;
-    border: 1px solid var(--color-outline);
-    border-radius: var(--border-radius);
-    padding: 2%;
-    animation: visible 5s linear;
-}
-
 .calendar .calendar-header {
     width: 100%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,17 +133,18 @@ input.warning::placeholder { color: var(--input-warning) }
 }
 .calendar .calendar-main {
     width: 100%;
+    height: 80%;
 }
 
 .calendar .calendar-main .days{
     width: 100%;
+    height: 10%;
     display: flex;
     justify-content: space-between;
 }
 
 .calendar .calendar-main .days .day{
     width: calc(100% / 7);
-    padding: var(--margin-double);
     font-size: var(--font-default-size);
     font-weight: bold;
     display: flex;
@@ -150,13 +153,13 @@ input.warning::placeholder { color: var(--input-warning) }
 
 .calendar .calendar-main .dates{
     width: 100%;
+    height: 90%;
     display: flex;
     flex-flow: row wrap;
 }
 
 .calendar .calendar-main .dates .date{
     width: calc(100% / 7);
-    padding: var(--margin-double);
     font-size: var(--font-default-size);
     display: flex;
     justify-content: center;
@@ -222,11 +225,11 @@ input.warning::placeholder { color: var(--input-warning) }
 }
 
 .todo .todo_title {
-    margin-left: var(--margin-double);
-    margin-top: var(--margin-double);
+    height: 10%;
     font-size: var(--font-title-size);
     font-weight: bold;
-    padding-bottom: var(--margin-primary);
+    padding-left: var(--margin-primary);
+    padding-top: var(--margin-primary);
     border-bottom: var(--border-size) solid var(--color-outline);
 }
 
@@ -235,9 +238,14 @@ input.warning::placeholder { color: var(--input-warning) }
     cursor: pointer;
 }
 
+.todo .todo_content {
+    width: 100%;
+    height: 90%;
+}
+
 .todo .todo_content .todo_list {
     -ms-overflow-style: none; /* IE and Edge */
-    height: 55vh;
+    height: 80%;
     overflow-y: scroll;
     margin: var(--margin-primary) var(--margin-double);
     list-style: none;
@@ -325,27 +333,30 @@ input.warning::placeholder { color: var(--input-warning) }
     align-items: center;
 }
 
-.todo .todo_content.todo_content_add {
-    margin-top: var(--margin-double);
+.todo .todo_content .todoForm {
+    width: 100%;
+    height: 90%;
 }
 
-.todo .todo_content .section {
+.todo .todo_content .todoForm .section {
+    height: 30%;
     display: flex;
     flex-direction: column;
-    margin: 0 calc(var(--margin-primary) * 3);
+    padding-top: var(--margin-primary);
+    padding-left: var(--margin-primary);
 }
 
-.todo .todo_content .section span {
+.todo .todo_content .todoForm .section span {
     font-size: calc(var(--font-title-size)/1.2);
     font-weight: bold;
+    height: 30%;
 }
 
-.todo .todo_content .section input, textarea {
+.todo .todo_content .todoForm .section input, textarea {
     width: 90%;
-    height: 3rem;
-    margin: calc(var(--margin-primary) * 3) auto;
+    height: 50%;
     font-size: var(--default-size);
-    padding-left: var(--margin-primary);
+    margin: 0 var(--margin-primary) ;
 }
 
 .todo .todo_content .section input.time {
@@ -390,6 +401,7 @@ input.warning::placeholder { color: var(--input-warning) }
 
 .todo .todo_content .section.time .time-title{
     display: flex;
+    height: 30%;
     align-items: center;
     justify-content: space-between;
 }
@@ -401,7 +413,7 @@ input.warning::placeholder { color: var(--input-warning) }
 
 .todo .todo_content .todoAddbutton {
     width: 100%;
-    height: 3rem;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -420,6 +432,7 @@ input.warning::placeholder { color: var(--input-warning) }
 
 .list-add {
     width: 100%;
+    height: 20%;
     position: inherit;
     margin-bottom : 1rem;
     border-radius: var(--border-radius);
