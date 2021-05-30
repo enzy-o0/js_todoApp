@@ -37,7 +37,11 @@ module.exports = {
           // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
             template: 'index.html',
         }),
-        new Dotenv()
+        new Dotenv({
+            path: './.env',
+            safe: false,
+            silent: false,
+        }),
     ],
     devtool: 'source-map',
     // https://webpack.js.org/concepts/mode/#mode-development
