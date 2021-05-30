@@ -3,7 +3,7 @@ const COORDS = 'coords';
 const weather = document.querySelector('.js-date')
 
 async function getWeather(lat, lng) {
-    const endpoint = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.API_KEY}&units=metric`)
+    const endpoint = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=5fbf5b9e1a26ce3a810def918022ebed&units=metric`)
     const response = await endpoint.json();
     
     const temp = Math.floor(response.main.temp);
